@@ -68,7 +68,8 @@ Looping Rendering
 Event Handling Directives
 - Used to listen for and handle user interactions, such as clicks, form submissions and key press
 
-1. v-on: Attaches an event listener to an element and executes a method when event occurs
+1. v-on: Listen for DOM events like click, submit, input. 
+         Attaches an event listener to an element and executes a method when event occurs
    
    ```
    <button v-on:click="handleClick">Click me</button>
@@ -86,4 +87,25 @@ Event Handling Directives
 4. v-pre: Prevents Vue from compiling this element. Useful when we want to display raw mustache
 ```
 <div v-pre>{{ this will not be compiled }}</div>
+```
+v-if is "real" conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created during toggles.
+
+v-if is also lazy: if the condition is false on initial render, it will not do anything - the conditional block won't be rendered until the condition becomes true for the first time.
+
+In comparison, v-show is much simpler - the element is always rendered regardless of initial condition, with CSS-based toggling.
+
+
+### List Rendering
+
+Use `v-for` directive to render list of items based on an array.
+
+```
+const items = ref([
+   {message:Foo},
+   {message:Bar}
+])
+
+<li v-for="(item, index) in items">
+      {{ index }} - {{ item.message }}
+</li>
 ```

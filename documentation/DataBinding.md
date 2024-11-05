@@ -39,3 +39,23 @@ v-html helps to generate  raw HTML content that is stored in a data property or 
 These are special attributes with "v-" prefix. Its job is to reactively apply updates to DOM when value of expression changes
 
 
+### Class and Style Bindings
+Binding to Objects:
+
+```
+<div class = "static" v-bind:class={active : isActive, 'text-danger': hasError}"></div>
+```
+
+This will render <div class ="static active"></div> if 'isActive' is true else '<div class="static text-danger"></div>' These are the classes that will be applied based on condition
+
+### Styles
+```
+const styleObj = reactive({
+    color: 'red',
+    fontSize: '30px'
+})
+
+<div :style="styleObj"></div>
+```
+We can directly apply styles object defined in reactive
+
